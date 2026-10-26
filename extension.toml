@@ -15,4 +15,4 @@ language = "Smarty"
 
 [grammars.smarty]
 repository = "https://github.com/elsamrafisptr/tree-sitter-smarty"
-commit = "18e0bfd701a13bf83475e6a2e6c35ef7eed62034"
+commit = "0557ca87aa4eb90d143cc34666f29e5ba9cf6df0"
