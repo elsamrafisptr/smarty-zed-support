@@ -1,0 +1,252 @@
+[
+  {
+    "label": "/block",
+    "name": "/block",
+    "detail": ""
+  },
+  {
+    "label": "/capture",
+    "name": "/capture",
+    "detail": ""
+  },
+  {
+    "label": "/foreach",
+    "name": "/foreach",
+    "detail": ""
+  },
+  {
+    "label": "/function",
+    "name": "/function",
+    "detail": ""
+  },
+  {
+    "label": "/if",
+    "name": "/if",
+    "detail": ""
+  },
+  {
+    "label": "/literal",
+    "name": "/literal",
+    "detail": ""
+  },
+  {
+    "label": "/strip",
+    "name": "/strip",
+    "detail": ""
+  },
+  {
+    "label": "|capitalize",
+    "name": "capitalize",
+    "detail": "This is used to capitalize the first letter of all words in a variable. This is similar to the PHP ucwords() function."
+  },
+  {
+    "label": "|cat",
+    "name": "cat",
+    "detail": "This value is concatenated to the given variable."
+  },
+  {
+    "label": "|count_characters",
+    "name": "count_characters",
+    "detail": "This is used to count the number of characters in a variable."
+  },
+  {
+    "label": "|count_paragraphs",
+    "name": "count_paragraphs",
+    "detail": "This is used to count the number of paragraphs in a variable."
+  },
+  {
+    "label": "|count_sentences",
+    "name": "count_sentences",
+    "detail": "This is used to count the number of sentences in a variable. A sentence being delimited by a dot, question- or exclamation-mark (.?!)."
+  },
+  {
+    "label": "|count_words",
+    "name": "count_words",
+    "detail": "This is used to count the number of words in a variable."
+  },
+  {
+    "label": "|date_format",
+    "name": "date_format",
+    "detail": "This formats a date and time into the given strftime() format."
+  },
+  {
+    "label": "|default",
+    "name": "default",
+    "detail": "This is used to set a default value for a variable. If the variable is unset or an empty string, the given default value is printed instead. Default takes the one argument."
+  },
+  {
+    "label": "|escape",
+    "name": "escape",
+    "detail": "escape is used to encode or escape a variable to html, url, single quotes, hex, hexentity, javascript and mail. By default its html."
+  },
+  {
+    "label": "|from_charset",
+    "name": "from_charset",
+    "detail": "from_charset is used to transcode a string from a given charset to the internal charset. This is the exact opposite of the to_charset modifier."
+  },
+  {
+    "label": "|indent",
+    "name": "indent",
+    "detail": "This indents a string on each line, default is 4."
+  },
+  {
+    "label": "|lower",
+    "name": "lower",
+    "detail": "This is used to lowercase a variable. This is equivalent to the PHP strtolower() function."
+  },
+  {
+    "label": "|nl2br",
+    "name": "nl2br",
+    "detail": "All '\\n' line breaks will be converted to html <br /> tags in the given variable. This is equivalent to the PHP's nl2br() function."
+  },
+  {
+    "label": "|regex_replace",
+    "name": "regex_replace",
+    "detail": "A regular expression search and replace on a variable. Use the preg_replace() syntax from the PHP manual."
+  },
+  {
+    "label": "|replace",
+    "name": "replace",
+    "detail": "A simple search and replace on a variable. This is equivalent to the PHP's str_replace() function."
+  },
+  {
+    "label": "|spacify",
+    "name": "spacify",
+    "detail": "spacify is a way to insert a space between every character of a variable. You can optionally pass a different character or string to insert."
+  },
+  {
+    "label": "|string_format",
+    "name": "string_format",
+    "detail": "This is a way to format strings, such as decimal numbers and such. Use the syntax for sprintf() for the formatting."
+  },
+  {
+    "label": "|strip",
+    "name": "stripmodifier",
+    "detail": "This replaces all spaces, newlines and tabs with a single space, or with the supplied string."
+  },
+  {
+    "label": "|strip_tags",
+    "name": "strip_tags",
+    "detail": "This strips out markup tags, basically anything between < and >."
+  },
+  {
+    "label": "|to_charset",
+    "name": "to_charset",
+    "detail": "to_charset is used to transcode a string from the internal charset to a given charset. This is the exact opposite of the from_charset modifier."
+  },
+  {
+    "label": "|truncate",
+    "name": "truncate",
+    "detail": "This truncates a variable to a character length, the default is 80."
+  },
+  {
+    "label": "|unescape",
+    "name": "unescape",
+    "detail": "unescape is used to decode entity, html and htmlall. It counters the effects of the escape modifier for the given types."
+  },
+  {
+    "label": "|upper",
+    "name": "upper",
+    "detail": "This is used to uppercase a variable. This is equivalent to the PHP strtoupper() function."
+  },
+  {
+    "label": "|wordwrap",
+    "name": "wordwrap",
+    "detail": "Wraps a string to a column width, the default is 80."
+  },
+  {
+    "label": "append",
+    "name": "append",
+    "detail": "{append} is used for creating or appending template variable arrays during the execution of a template."
+  },
+  {
+    "label": "assign",
+    "name": "assign",
+    "detail": "{assign} is used for assigning template variables during the execution of a template."
+  },
+  {
+    "label": "block",
+    "name": "block",
+    "detail": "{block} is used to define a named area of template source for template inheritance."
+  },
+  {
+    "label": "break",
+    "name": "break",
+    "detail": "{break} aborts the iteration of the array."
+  },
+  {
+    "label": "capture",
+    "name": "capture",
+    "detail": "{capture} is used to collect the output of the template between the tags into a variable instead of displaying it. Any content between {capture name='foo'} and {/capture} is collected into the variable specified in the name attribute."
+  },
+  {
+    "label": "case",
+    "name": "case",
+    "detail": ""
+  },
+  {
+    "label": "comment",
+    "name": "comment",
+    "detail": ""
+  },
+  {
+    "label": "debug",
+    "name": "debug",
+    "detail": "{debug} dumps the debug console to the page."
+  },
+  {
+    "label": "else",
+    "name": "else",
+    "detail": ""
+  },
+  {
+    "label": "elseif",
+    "name": "elseif",
+    "detail": ""
+  },
+  {
+    "label": "extends",
+    "name": "extends",
+    "detail": "{extends} tags are used in child templates in template inheritance for extending parent templates."
+  },
+  {
+    "label": "foreach",
+    "name": "foreach",
+    "detail": "{foreach} is used for looping over arrays of data."
+  },
+  {
+    "label": "foreachelse",
+    "name": "foreachelse",
+    "detail": ""
+  },
+  {
+    "label": "function",
+    "name": "function",
+    "detail": "{function} is used to create functions within a template and call them just like a plugin function. Instead of writing a plugin that generates presentational content, keeping it in the template is often a more manageable choice. It also simplifies data traversal, such as deeply nested menus."
+  },
+  {
+    "label": "if",
+    "name": "if",
+    "detail": ""
+  },
+  {
+    "label": "ifelse",
+    "name": "ifelse",
+    "detail": ""
+  },
+  {
+    "label": "include",
+    "name": "include",
+    "detail": "{include} tags are used for including other templates in the current template."
+  },
+  {
+    "label": "literal",
+    "name": "literal",
+    "detail": "{literal} tags allow a block of data to be taken literally. This is typically used around Javascript or stylesheet blocks where {curly braces} would interfere with the template delimiter syntax."
+  },
+  {
+    "label": "strip",
+    "name": "strip",
+    "detail": "Anything within {strip}{/strip} tags are stripped of the extra spaces or carriage returns at the beginnings and ends of the lines before they are displayed."
+  }
+]

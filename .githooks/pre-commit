@@ -1,0 +1,57 @@
+#!/bin/sh
+# Blocks commits that stage a hand-written file over 5,000 tokens (tokens = bytes / 4).
+# Only staged content is measured. Exempt: binary files, and files marked
+# linguist-generated or linguist-vendored in .gitattributes (lockfiles, codegen, vendored code).
+# Install once per clone: git config core.hooksPath .githooks
+
+max_tokens=5000
+
+offenders=$(
+	git -c core.quotePath=false diff --cached --name-only --diff-filter=ACMR |
+	while IFS= read -r file; do
+		case "$(git check-attr --cached linguist-generated linguist-vendored -- "$file")" in
+			*": set"* | *": true"*) continue ;;
+		esac
+		case "$(git diff --cached --numstat -- "$file")" in
+			-*) continue ;; # binary
+		esac
+		case "$(git ls-files -s -- "$file")" in
+			160000*) continue ;; # submodule pointer, not a file
+		esac
+		tokens=$(( $(git cat-file -s ":$file") / 4 ))
+		if [ "$tokens" -gt "$max_tokens" ]; then
+			printf '  %6d tokens  %s\n' "$tokens" "$file"
+		fi
+	done
+)
+
+[ -z "$offenders" ] && exit 0
+
+cat >&2 <<EOF
+pre-commit: commit blocked. These staged files are over $max_tokens tokens
+(tokens = bytes / 4, so the limit is $((max_tokens * 4)) bytes):
+
+$offenders
+
+How to split a file that is too big:
+  1. Find the separate jobs in the file (for example: protocol I/O,
+     formatting, completions). Split by job, never by line count, and never
+     into helpers that only exist to make the file shorter.
+  2. Move each job into its own file next to the original:
+       Rust:      move items into src/<job>.rs, add 'mod <job>;' to the parent
+                  and 'use <job>::{...};' where they are used.
+       JavaScript: move functions into src/<job>.js, end it with
+                  'module.exports = { fn };', and import with
+                  "const { fn } = require('./<job>');".
+       C:         move functions into <job>.c with their declarations in
+                  <job>.h, and '#include "<job>.h"' where they are used.
+       Markdown:  move whole sections into docs/<topic>.md and link to them.
+       .scm query: Zed reads one file per query kind, so do not split it;
+                  merge similar patterns with [ ... ] alternations instead.
+  3. Keep exported names and behavior the same, so callers do not change.
+     Run the tests, then 'git add' the new files and commit again.
+  4. Is the file generated or vendored (lockfile, bundle, parser output)?
+     Do not split it. Mark it in .gitattributes instead:
+       path/to/file linguist-generated
+EOF
+exit 1

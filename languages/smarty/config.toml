@@ -1,0 +1,7 @@
+name = "Smarty"
+grammar = "smarty"
+path_suffixes = ["tpl"]
+block_comment = { start = "{*", end = "*}" }
+tab_size = 4
+hard_tabs = false
+word_characters = ["$"]

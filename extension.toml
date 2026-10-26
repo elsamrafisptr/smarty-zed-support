@@ -1,0 +1,18 @@
+id = "smarty"
+name = "Smarty"
+description = "Smarty template support: syntax highlighting, formatting and tag completions."
+version = "0.1.0"
+schema_version = 1
+authors = ["Elsam Rafi Saputra <134671598+elsamrafisptr@users.noreply.github.com>"]
+repository = "https://github.com/elsamrafisptr/smarty-zed-support"
+
+[language_servers.smarty-language-server]
+name = "smarty-language-server"
+language = "Smarty"
+
+[language_servers.smarty-language-server.language_ids]
+"Smarty" = "smarty"
+
+[grammars.smarty]
+repository = "https://github.com/elsamrafisptr/tree-sitter-smarty"
+commit = "18e0bfd701a13bf83475e6a2e6c35ef7eed62034"

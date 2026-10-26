@@ -1,0 +1,20 @@
+# Rust build artifacts
+/target/
+**/*.wasm
+
+# Grammar clones Zed creates when installing the dev extension
+/grammars/
+
+# The grammar lives in its own repo (github.com/elsamrafisptr/tree-sitter-smarty);
+# a local checkout here is for editing only.
+/tree-sitter-smarty/
+
+# Node deps
+node_modules/
+
+# Local reference material
+/.ref/
+
+# OS noise
+.DS_Store
+Thumbs.db

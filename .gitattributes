@@ -1,0 +1,7 @@
+# Files not written by hand. They are exempt from the pre-commit size limit
+# (.githooks/pre-commit) and collapsed in GitHub diffs.
+*.lock                       linguist-generated
+package-lock.json            linguist-generated
+language-server/dist/**      linguist-generated
+language-server/data/**      linguist-generated
+language-server/js-beautify/** linguist-vendored

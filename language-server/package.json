@@ -1,0 +1,17 @@
+{
+  "name": "smarty-language-server",
+  "version": "0.1.0",
+  "description": "Minimal LSP server for Smarty template formatting (port of smarty-vscode-support)",
+  "license": "MIT",
+  "bin": {
+    "smarty-language-server": "dist/smarty-language-server.js"
+  },
+  "main": "dist/smarty-language-server.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "node test.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}
