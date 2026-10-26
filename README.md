@@ -5,8 +5,9 @@ support: HTML-aware syntax highlighting for Smarty tags, comments, variables
 and other constructs, plus **formatting** and **tag completions** via a small
 language server.
 
-This is a port of the [`smarty-vscode-support`](../smarty-vscode-support) VS
-Code extension to Zed's tree-sitter based language support.
+This is a port of the
+[smarty-vscode-support](https://github.com/aswinkumar863/smarty-vscode-support)
+VS Code extension to Zed's tree-sitter based language support.
 
 ## Features
 
@@ -36,7 +37,7 @@ Code extension to Zed's tree-sitter based language support.
 The VS Code extension also ships **hover** and **document links** (for
 Smarty's `{include file="…::"}` / `{extends "…::"}` references) through a
 forked `vscode-html-languageservice` language server
-([`smarty-vscode-support/server`](../smarty-vscode-support/server)). That
+([`smarty-vscode-support/server`](https://github.com/aswinkumar863/smarty-vscode-support/tree/master/server)). That
 service is built with VS Code's custom gulp toolchain against the fork and is
 not published to npm, so it cannot be dropped into Zed as-is. That is the one
 genuinely remaining follow-up.
