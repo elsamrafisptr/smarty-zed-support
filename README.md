@@ -2,7 +2,8 @@
 
 A Zed extension providing [Smarty](https://www.smarty.net/) template language
 support: HTML-aware syntax highlighting for Smarty tags, comments, variables
-and other constructs, plus **formatting** via a bundled language server.
+and other constructs, plus **formatting** and **tag completions** via a small
+language server.
 
 This is a port of the [`smarty-vscode-support`](../smarty-vscode-support) VS
 Code extension to Zed's tree-sitter based language support.
@@ -58,18 +59,19 @@ launched by Zed with `node_binary_path()`.
 
 Zed builds the extension Rust crate and clones and compiles the grammar from
 [tree-sitter-smarty](https://github.com/elsamrafisptr/tree-sitter-smarty) at the
-commit pinned in `extension.toml`. The language server bundle
-(`language-server/dist/smarty-language-server.js`) is checked in and embedded
-into the extension at compile time, so there is nothing else to build first.
+commit pinned in `extension.toml`. On first use, the extension downloads the
+language server from this repo's GitHub release `v<version>` (matching
+`version` in `Cargo.toml` / `extension.toml`) into its work directory, and
+reuses it after that, also offline.
 
-> **Rebuilding the language server.** After editing `language-server/src/`,
-> rebuild the bundle *before* reinstalling the extension, since the Rust crate
-> embeds whatever is in `dist/`:
+> **Releasing a version.** Bump `version` in both `Cargo.toml` and
+> `extension.toml`, then build, test and upload the server under the same tag:
 > ```sh
 > cd language-server
 > npm install
 > npm run build     # -> dist/smarty-language-server.js
 > npm test          # LSP round-trip with assertions; non-zero exit on failure
+> gh release create v0.1.0 dist/smarty-language-server.js --title v0.1.0 --notes "..."
 > ```
 
 > **Pre-commit hook.** Commits that stage a hand-written file over 5,000 tokens
@@ -101,11 +103,10 @@ smarty-zed-support/
 │   ├── indents.scm         # auto-indentation
 │   ├── outline.scm         # symbol outline
 │   └── injections.scm      # JS/CSS injection in script/style
-├── language-server/        # the bundled formatting + completions LSP (Node, zero runtime deps)
+├── language-server/        # the formatting + completions LSP (Node, zero runtime deps)
 │   ├── src/server.js       # LSP over stdio + ported BeautifySmarty
 │   ├── data/smarty-tags.json  # completion list, generated from snippets.json
-│   ├── js-beautify/        # vendored js-beautify fork (formatter core)
-│   └── dist/smarty-language-server.js  # esbuild bundle (checked in)
+│   └── js-beautify/        # vendored js-beautify fork (formatter core)
 ├── .githooks/pre-commit    # blocks hand-written files over 5,000 tokens
 └── scripts/test-pre-commit.sh
 ```
@@ -136,10 +137,9 @@ Formatting options default to the VS Code `html.format.*` values and can be
 overridden through `initializationOptions.config`, for example in Zed's
 `settings.json` under `lsp.smarty-language-server.initialization_options`.
 
-Zed extensions can only read and write their own work directory at runtime, so
-`src/lib.rs` embeds the bundle with `include_str!`, writes it to the work
-directory when it changes, and launches it with Zed's Node runtime
-(`node_binary_path()`).
+`src/lib.rs` downloads the bundle from the GitHub release matching the
+extension version (Zed's publishing rules forbid bundling a language server)
+and launches it with Zed's Node runtime (`node_binary_path()`).
 
 To exercise it standalone (no Zed required):
 
